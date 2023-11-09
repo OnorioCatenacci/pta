@@ -18,6 +18,21 @@ defmodule PtaWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    # Venues
+    live "/venues", VenueLive.Index, :index
+    live "/venues/new", VenueLive.Index, :new
+    live "/venues/:id/edit", VenueLive.Index, :edit
+
+    live "/venues/:id", VenueLive.Show, :show
+    live "/venues/:id/show/edit", VenueLive.Show, :edit
+    # Performances
+    live "/performances", PerformanceLive.Index, :index
+    live "/performances/new", PerformanceLive.Index, :new
+    live "/performances/:id/edit", PerformanceLive.Index, :edit
+
+    live "/performances/:id", PerformanceLive.Show, :show
+    live "/performances/:id/show/edit", PerformanceLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.

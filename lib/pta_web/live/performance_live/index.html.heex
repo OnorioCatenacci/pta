@@ -1,0 +1,45 @@
+<.header>
+  Listing Performances
+  <:actions>
+    <.link patch={~p"/performances/new"}>
+      <.button>New Performance</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="performances"
+  rows={@streams.performances}
+  row_click={fn {_id, performance} -> JS.navigate(~p"/performances/#{performance}") end}
+>
+  <:col :let={{_id, performance}} label="Name"><%= performance.name %></:col>
+  <:col :let={{_id, performance}} label="Performer"><%= performance.performer %></:col>
+  <:col :let={{_id, performance}} label="Date"><%= performance.date %></:col>
+  <:col :let={{_id, performance}} label="Start time"><%= performance.start_time %></:col>
+  <:col :let={{_id, performance}} label="Event hash"><%= performance.event_hash %></:col>
+  <:action :let={{_id, performance}}>
+    <div class="sr-only">
+      <.link navigate={~p"/performances/#{performance}"}>Show</.link>
+    </div>
+    <.link patch={~p"/performances/#{performance}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, performance}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: performance.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal :if={@live_action in [:new, :edit]} id="performance-modal" show on_cancel={JS.patch(~p"/performances")}>
+  <.live_component
+    module={PtaWeb.PerformanceLive.FormComponent}
+    id={@performance.id || :new}
+    title={@page_title}
+    action={@live_action}
+    performance={@performance}
+    patch={~p"/performances"}
+  />
+</.modal>
