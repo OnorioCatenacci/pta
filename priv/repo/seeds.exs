@@ -35,16 +35,16 @@ Pta.Repo.insert!(%Pta.Event.Venue{
 })
 
 Pta.Repo.insert!(%Pta.Event.Venue{
-  name: "Little Caesars Arena",
-  address: "2645 Woodward Avenue",
+  name: "Fox Theatre",
+  address: "2211 Woodward Avenue",
   city: "Detroit",
   state: "MI",
   zip: "48201"
 })
 
 Pta.Repo.insert!(%Pta.Event.Venue{
-  name: "Fox Theatre",
-  address: "2211 Woodward Avenue",
+  name: "Little Caesars Arena",
+  address: "2645 Woodward Avenue",
   city: "Detroit",
   state: "MI",
   zip: "48201"
