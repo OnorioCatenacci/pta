@@ -12,11 +12,11 @@
   rows={@streams.performances}
   row_click={fn {_id, performance} -> JS.navigate(~p"/performances/#{performance}") end}
 >
+  <:col label="Venue"><.input field={@venues.name} type="select" /></:col>
   <:col :let={{_id, performance}} label="Name"><%= performance.name %></:col>
   <:col :let={{_id, performance}} label="Performer"><%= performance.performer %></:col>
   <:col :let={{_id, performance}} label="Date"><%= performance.date %></:col>
   <:col :let={{_id, performance}} label="Start time"><%= performance.start_time %></:col>
-  <:col :let={{_id, performance}} label="Event hash"><%= performance.event_hash %></:col>
   <:action :let={{_id, performance}}>
     <div class="sr-only">
       <.link navigate={~p"/performances/#{performance}"}>Show</.link>
@@ -29,11 +29,16 @@
       data-confirm="Are you sure?"
     >
       Delete
-    </.link>
+    </.link>col
   </:action>
 </.table>
 
-<.modal :if={@live_action in [:new, :edit]} id="performance-modal" show on_cancel={JS.patch(~p"/performances")}>
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="performance-modal"
+  show
+  on_cancel={JS.patch(~p"/performances")}
+>
   <.live_component
     module={PtaWeb.PerformanceLive.FormComponent}
     id={@performance.id || :new}
