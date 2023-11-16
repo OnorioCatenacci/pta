@@ -16,10 +16,10 @@
   <:col :let={{_id, performance}} label="Name"><%= performance.name %></:col>
   <:col :let={{_id, performance}} label="Performer"><%= performance.performer %></:col>
   <:col :let={{_id, performance}} label="Date">
-    <%= Calendar.strftime(performance.date, "%B %-d, %Y") %>
+    <%= format_standard_date(performance.date) %>
   </:col>
   <:col :let={{_id, performance}} label="Start time">
-    <%= Calendar.strftime(performance.start_time, "%I:%M %p") %>
+    <%= format_standard_time(performance.start_time) %>
   </:col>
   <:action :let={{_id, performance}}>
     <div class="sr-only">

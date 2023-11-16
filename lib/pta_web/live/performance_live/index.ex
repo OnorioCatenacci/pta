@@ -1,5 +1,6 @@
 defmodule PtaWeb.PerformanceLive.Index do
   use PtaWeb, :live_view
+  use Pta.DisplayFormatting
 
   alias Pta.Event
   alias Pta.Event.Performance
