@@ -627,3 +627,11 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   start_time: Time.from_iso8601!("18:00:00-05:00"),
   event_hash: calculate_event_hash(fh_id,"2024-07-16","18:00:00-05:00")
 })
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: 1,
+  name: "Sessanta",
+  date: Date.from_iso8601!("2024-05-02"),
+  performer: "Primus, Puscifer, and A Perfect Circle",
+  start_time: Time.from_iso8601!("20:00:00-05:00")
+})
