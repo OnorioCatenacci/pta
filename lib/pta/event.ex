@@ -114,7 +114,20 @@ defmodule Pta.Event do
 
   """
   def list_performances do
-    Repo.all(Performance)
+    q =
+      from p in Performance,
+        join: v in Venue,
+        on: p.venue_id == v.id,
+        select: %Performance{
+          id: p.id,
+          venue: v.name,
+          name: p.name,
+          date: p.date,
+          performer: p.performer,
+          start_time: p.start_time
+        }
+
+    Repo.all(q)
   end
 
   @doc """

@@ -73,3 +73,11 @@ Pta.Repo.insert!(%Pta.Event.Venue{
   state: "MI",
   zip: "48226"
 })
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: 1,
+  name: "Sessanta",
+  date: Date.from_iso8601!("2024-05-02"),
+  performer: "Primus, Puscifer, and A Perfect Circle",
+  start_time: Time.from_iso8601!("20:00:00-05:00")
+})

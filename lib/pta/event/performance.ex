@@ -8,7 +8,7 @@ defmodule Pta.Event.Performance do
     field :performer, :string
     field :start_time, :time
     field :event_hash, :string
-    field :venue_id, :id
+    belongs_to :venue, Pta.Event.Venue
 
     timestamps()
   end

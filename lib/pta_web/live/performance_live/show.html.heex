@@ -9,16 +9,21 @@
 </.header>
 
 <.list>
+  <:item title="Venue"><%= @performance.v.name %></:item>
   <:item title="Name"><%= @performance.name %></:item>
   <:item title="Performer"><%= @performance.performer %></:item>
   <:item title="Date"><%= @performance.date %></:item>
   <:item title="Start time"><%= @performance.start_time %></:item>
-  <:item title="Event hash"><%= @performance.event_hash %></:item>
 </.list>
 
 <.back navigate={~p"/performances"}>Back to performances</.back>
 
-<.modal :if={@live_action == :edit} id="performance-modal" show on_cancel={JS.patch(~p"/performances/#{@performance}")}>
+<.modal
+  :if={@live_action == :edit}
+  id="performance-modal"
+  show
+  on_cancel={JS.patch(~p"/performances/#{@performance}")}
+>
   <.live_component
     module={PtaWeb.PerformanceLive.FormComponent}
     id={@performance.id}
