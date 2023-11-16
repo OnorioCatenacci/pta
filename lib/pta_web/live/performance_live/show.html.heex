@@ -9,11 +9,11 @@
 </.header>
 
 <.list>
-  <:item title="Venue"><%= @performance.v.name %></:item>
+  <:item title="Venue"><%= @performance.venue %></:item>
   <:item title="Name"><%= @performance.name %></:item>
   <:item title="Performer"><%= @performance.performer %></:item>
-  <:item title="Date"><%= @performance.date %></:item>
-  <:item title="Start time"><%= @performance.start_time %></:item>
+  <:item title="Date"><%= Calendar.strftime(@performance.date, "%B %-d, %Y") %></:item>
+  <:item title="Start time"><%= Calendar.strftime(@performance.start_time, "%I:%M %p") %></:item>
 </.list>
 
 <.back navigate={~p"/performances"}>Back to performances</.back>

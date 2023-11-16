@@ -144,7 +144,23 @@ defmodule Pta.Event do
       ** (Ecto.NoResultsError)
 
   """
-  def get_performance!(id), do: Repo.get!(Performance, id)
+  def get_performance!(id) do
+    q =
+      from p in Performance,
+        where: p.id == ^id,
+        join: v in Venue,
+        on: p.venue_id == v.id,
+        select: %Performance{
+          id: p.id,
+          venue: v.name,
+          name: p.name,
+          date: p.date,
+          performer: p.performer,
+          start_time: p.start_time
+        }
+
+    Repo.one(q)
+  end
 
   @doc """
   Creates a performance.

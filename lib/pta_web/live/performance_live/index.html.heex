@@ -15,9 +15,11 @@
   <:col :let={{_id, performance}} label="Venue"><%= performance.venue %></:col>
   <:col :let={{_id, performance}} label="Name"><%= performance.name %></:col>
   <:col :let={{_id, performance}} label="Performer"><%= performance.performer %></:col>
-  <:col :let={{_id, performance}} label="Date"><%= performance.date %></:col>
+  <:col :let={{_id, performance}} label="Date">
+    <%= Calendar.strftime(performance.date, "%B %-d, %Y") %>
+  </:col>
   <:col :let={{_id, performance}} label="Start time">
-    <%= performance.start_time %>
+    <%= Calendar.strftime(performance.start_time, "%I:%M %p") %>
   </:col>
   <:action :let={{_id, performance}}>
     <div class="sr-only">
