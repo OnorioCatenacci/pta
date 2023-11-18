@@ -29,12 +29,11 @@ The interesting part of this will be getting the date/time information for event
 
 I'm using HTTPoison to grab the html of the page.  For the page listing Pine Knob music theatre (which is the one I'm most interested in getting) it appears the html is parsed by some sort of Javascript library or some sort of parser before it's served to the browser.  I say this because I see this sort of html (from HTTPoison):
 
-> <span class="html-tag">&lt;span <span class="html-attribute-name">class</
-> span>="<span class="html-attribute-value">m-date__singleDate</span>"&gt;</ 
-> span><span class="html-tag">&lt;span <span class="html-attribute-name">class</
+> &lt;span class="html-tag"&gt;&lt;span &lt;span class="html-attribute-name"&gt;class&lt;/
+> span&gt;="&lt;span class="html-attribute-value"&gt;m-date__singleDate&lt;/span&gt;"&gt;
 
 but when I inspect source in the web browser I see something more like this:
-> <span class=m-date__singleDate>
->   <span class=m-date__month> May </span>
+> &lt;span class=m-date__singleDate&gt;
+>   &lt;span class=m-date__month&gt; May &lt;/span&gt;
 
 So, I can't just do a normal parse on the value returned by HTTPoison. I use Rosie Pattern Language to do my parsing because it supports Parsing Expression Grammars which can support recursive constructs.  RegEx's do not correctly support recursive constructs.  Besides that Rosie has some other nice features (built in unit test facility is great).
