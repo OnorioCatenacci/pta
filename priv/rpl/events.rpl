@@ -1,0 +1,49 @@
+rpl 1.3
+
+package events
+-- test start_of_event_list accepts "<h2>Upcoming Events</h2>"
+-- test event_start accepts "eventItem"
+
+-- happy path tests
+-- test opening_single_date accepts "<div class=info><div class=date><span class=\"html-attribute-value\">m-date__singleDate</span>"
+-- shouldn't care about whitespaces
+-- test opening_single_date accepts "<div class=info> <div class=date> <span class=\"html-attribute-value\"> m-date__singleDate </span>"
+-- test month accepts "<span class=\"html-attribute-value\">m-date__month</span>\"&gt;</span> May <span class=\"html-tag\">"
+-- test day accepts "<span class=\"html-attribute-value\">m-date__day</span>\"&gt;</span>02<span class=\"html-tag\">"
+-- test year accepts "<span class=\"html-attribute-value\">m-date__year</span>\"&gt;</span> / 2024<span class=\"html-tag\">"
+date_prefix = "m-date"
+start_of_event_list = "<h2>Upcoming Events</h2>"
+event_start = "eventItem"
+opening_tag = "<span class=\"html-attribute-value\">"
+closing_tag = "</span>"
+closing_tag_whole_construct = "<span class=\"html-tag\">"
+grammar
+   info_division_start = "<div class=info>"
+   date_division_start = "<div class=date>"
+   single_date_attribute = date_prefix "__singleDate"
+in
+   opening_single_date = info_division_start date_division_start opening_tag single_date_attribute closing_tag
+end
+
+grammar
+   event_month = opening_tag date_prefix "__month" closing_tag 
+   month_string = ([[:alnum:]]+)
+in
+   month = event_month "\"&gt;</span>" month_string closing_tag_whole_construct
+end
+
+grammar
+   event_day = opening_tag date_prefix "__day" closing_tag 
+   day_digit = ([[:digit:]]+)
+in
+   day = event_day "\"&gt;</span>" day_digit closing_tag_whole_construct
+end
+
+grammar
+   event_year = opening_tag date_prefix "__year" closing_tag 
+   leading_year_separator = ~ "\u002F" ~ 
+   year_digit = [[:digit:]]{4,4}
+in
+   year = event_year "\"&gt;</span>" leading_year_separator year_digit closing_tag_whole_construct
+end
+
