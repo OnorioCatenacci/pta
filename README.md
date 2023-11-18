@@ -14,10 +14,6 @@ I consider there will be a few things I need to keep track of:
 - Events
   - Date
   - Time Of Start
-<<<<<<< HEAD
-=======
-  - Estimated Event Duration in minutes
->>>>>>> Initial commit
   - Venue
   - Name
   
