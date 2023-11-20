@@ -6,14 +6,22 @@ defmodule Pta.FetchEvents do
   We want to get events for a given website
   """
   # https://www.313presents.com/venue/pine-knob-music-theatre
-  def get_events(website) do
-    %HTTPoison.Response{status_code: 200, body: body} =
-      HTTPoison.get!(website)
+  def find_events(html_page, event_detail_to_get) do
+    path_to_events_patterns = "/home/onorio_developer/pta/priv/rpl/events.rpl"
 
-    body
+    command_to_be_run =
+      "curl -s \"" <>
+        html_page <>
+        "\" | /usr/local/bin/rosie grep -o json -f " <>
+        path_to_events_patterns <> " " <> event_detail_to_get
+
+    {json_of_event, 0} =
+      System.shell(command_to_be_run)
+
+    json_of_event
   end
 
-  def find_events(html_page) do
-    System.cmd("rosie")
+  def get_all_event_dates() do
+    find_events("https://www.313presents.com/venue/pine-knob-music-theatre", "events.event_date")
   end
 end
