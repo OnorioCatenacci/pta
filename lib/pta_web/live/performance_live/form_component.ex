@@ -23,7 +23,7 @@ defmodule PtaWeb.PerformanceLive.FormComponent do
         <.input field={@form[:performer]} type="text" label="Performer" />
         <.input field={@form[:date]} type="date" label="Date" />
         <.input field={@form[:start_time]} type="time" label="Start time" />
-        <.input field={@form[:event_hash]} type="text" label="Event hash" />
+        <%!-- <.input field={@form[:event_hash]} type="text" label="Event hash" /> --%>
         <:actions>
           <.button phx-disable-with="Saving...">Save Performance</.button>
         </:actions>

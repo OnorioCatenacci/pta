@@ -4,9 +4,27 @@ defmodule PtaWeb.PerformanceLiveTest do
   import Phoenix.LiveViewTest
   import Pta.EventFixtures
 
-  @create_attrs %{name: "some name", date: "2023-11-08", performer: "some performer", start_time: "14:00", event_hash: "some event_hash"}
-  @update_attrs %{name: "some updated name", date: "2023-11-09", performer: "some updated performer", start_time: "15:01", event_hash: "some updated event_hash"}
-  @invalid_attrs %{name: nil, date: nil, performer: nil, start_time: nil, event_hash: nil}
+  @create_attrs %{
+    name: "some name",
+    date: "2023-11-08",
+    performer: "some performer",
+    start_time: "14:00",
+    venue_id: 1
+  }
+  @update_attrs %{
+    name: "some updated name",
+    date: "2023-11-09",
+    performer: "some updated performer",
+    start_time: "15:01",
+    venue_id: 1
+  }
+  @invalid_attrs %{
+    name: nil,
+    date: nil,
+    performer: nil,
+    start_time: nil,
+    venue_id: 0
+  }
 
   defp create_performance(_) do
     performance = performance_fixture()
@@ -72,7 +90,10 @@ defmodule PtaWeb.PerformanceLiveTest do
     test "deletes performance in listing", %{conn: conn, performance: performance} do
       {:ok, index_live, _html} = live(conn, ~p"/performances")
 
-      assert index_live |> element("#performances-#{performance.id} a", "Delete") |> render_click()
+      assert index_live
+             |> element("#performances-#{performance.id} a", "Delete")
+             |> render_click()
+
       refute has_element?(index_live, "#performances-#{performance.id}")
     end
   end

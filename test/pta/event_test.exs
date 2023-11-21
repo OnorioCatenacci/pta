@@ -21,7 +21,13 @@ defmodule Pta.EventTest do
     end
 
     test "create_venue/1 with valid data creates a venue" do
-      valid_attrs = %{name: "some name", state: "some state", zip: "some zip", address: "some address", city: "some city"}
+      valid_attrs = %{
+        name: "some name",
+        state: "some state",
+        zip: "some zip",
+        address: "some address",
+        city: "some city"
+      }
 
       assert {:ok, %Venue{} = venue} = Event.create_venue(valid_attrs)
       assert venue.name == "some name"
@@ -37,7 +43,14 @@ defmodule Pta.EventTest do
 
     test "update_venue/2 with valid data updates the venue" do
       venue = venue_fixture()
-      update_attrs = %{name: "some updated name", state: "some updated state", zip: "some updated zip", address: "some updated address", city: "some updated city"}
+
+      update_attrs = %{
+        name: "some updated name",
+        state: "some updated state",
+        zip: "some updated zip",
+        address: "some updated address",
+        city: "some updated city"
+      }
 
       assert {:ok, %Venue{} = venue} = Event.update_venue(venue, update_attrs)
       assert venue.name == "some updated name"
@@ -70,7 +83,13 @@ defmodule Pta.EventTest do
 
     import Pta.EventFixtures
 
-    @invalid_attrs %{name: nil, date: nil, performer: nil, start_time: nil, event_hash: nil}
+    @invalid_attrs %{
+      name: nil,
+      date: nil,
+      performer: nil,
+      start_time: nil,
+      venue_id: 0
+    }
 
     test "list_performances/0 returns all performances" do
       performance = performance_fixture()
@@ -83,14 +102,18 @@ defmodule Pta.EventTest do
     end
 
     test "create_performance/1 with valid data creates a performance" do
-      valid_attrs = %{name: "some name", date: ~D[2023-11-08], performer: "some performer", start_time: ~T[14:00:00], event_hash: "some event_hash"}
+      valid_attrs = %{
+        name: "some name",
+        date: ~D[2023-11-08],
+        performer: "some performer",
+        start_time: ~T[14:00:00]
+      }
 
       assert {:ok, %Performance{} = performance} = Event.create_performance(valid_attrs)
       assert performance.name == "some name"
       assert performance.date == ~D[2023-11-08]
       assert performance.performer == "some performer"
       assert performance.start_time == ~T[14:00:00]
-      assert performance.event_hash == "some event_hash"
     end
 
     test "create_performance/1 with invalid data returns error changeset" do
@@ -99,14 +122,21 @@ defmodule Pta.EventTest do
 
     test "update_performance/2 with valid data updates the performance" do
       performance = performance_fixture()
-      update_attrs = %{name: "some updated name", date: ~D[2023-11-09], performer: "some updated performer", start_time: ~T[15:01:01], event_hash: "some updated event_hash"}
 
-      assert {:ok, %Performance{} = performance} = Event.update_performance(performance, update_attrs)
+      update_attrs = %{
+        name: "some updated name",
+        date: ~D[2023-11-09],
+        performer: "some updated performer",
+        start_time: ~T[15:01:01]
+      }
+
+      assert {:ok, %Performance{} = performance} =
+               Event.update_performance(performance, update_attrs)
+
       assert performance.name == "some updated name"
       assert performance.date == ~D[2023-11-09]
       assert performance.performer == "some updated performer"
       assert performance.start_time == ~T[15:01:01]
-      assert performance.event_hash == "some updated event_hash"
     end
 
     test "update_performance/2 with invalid data returns error changeset" do

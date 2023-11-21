@@ -30,10 +30,10 @@ defmodule Pta.EventFixtures do
       attrs
       |> Enum.into(%{
         date: ~D[2023-11-08],
-        event_hash: "some event_hash",
         name: "some name",
         performer: "some performer",
-        start_time: ~T[14:00:00]
+        start_time: ~T[14:00:00],
+        venue_id: 1
       })
       |> Pta.Event.create_performance()
 
