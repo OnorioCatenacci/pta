@@ -1,13 +1,27 @@
 defmodule PtaWeb.PerformanceLive.Index do
   use PtaWeb, :live_view
-  use Pta.DisplayFormatting
 
   alias Pta.Event
   alias Pta.Event.Performance
+  alias Pta.DisplayFormatting
+
+  def get_novenue do
+    [no_venue] = Event.__info__(:attributes)[:no_venue]
+    no_venue
+  end
+
+  def get_nodate do
+    [no_date] = Event.__info__(:attributes)[:no_date]
+    no_date
+  end
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, stream(socket, :performances, Event.list_performances())}
+    socket = assign(socket,
+    filter: %{venue: get_novenue(), date: get_nodate()},
+    performances: Event.list_performances())
+
+    {:ok, socket}
   end
 
   @impl true

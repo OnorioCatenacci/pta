@@ -1,54 +1,23 @@
-<.header>
+<h1 class="text-xl text-transform: uppercase">
   Listing Performances
-  <:actions>
-    <.link patch={~p"/performances/new"}>
-      <.button>New Performance</.button>
-    </.link>
-  </:actions>
-</.header>
+</h1>
 
-<.table
-  id="performances"
-  rows={@streams.performances}
-  row_click={fn {_id, performance} -> JS.navigate(~p"/performances/#{performance}") end}
->
-  <:col :let={{_id, performance}} label="Venue"><%= performance.venue %></:col>
-  <:col :let={{_id, performance}} label="Name"><%= performance.name %></:col>
-  <:col :let={{_id, performance}} label="Performer"><%= performance.performer %></:col>
-  <:col :let={{_id, performance}} label="Date">
-    <%= format_standard_date(performance.date) %>
-  </:col>
-  <:col :let={{_id, performance}} label="Start time">
-    <%= format_standard_time(performance.start_time) %>
-  </:col>
-  <:action :let={{_id, performance}}>
-    <div class="sr-only">
-      <.link navigate={~p"/performances/#{performance}"}>Show</.link>
-    </div>
-    <.link patch={~p"/performances/#{performance}/edit"}>Edit</.link>
-  </:action>
-  <:action :let={{id, performance}}>
-    <.link
-      phx-click={JS.push("delete", value: %{id: performance.id}) |> hide("##{id}")}
-      data-confirm="Are you sure?"
-    >
-      Delete
-    </.link>
-  </:action>
-</.table>
+<table id="performances" class="border border-separate border-spacing-1 table-auto">
+  <tr>
+    <th class="border">Venue</th>
+    <th class="border">Name</th>
+    <th class="border">Performer</th>
+    <th class="border">Date</th>
+    <th class="border">Start Time</th>
+  </tr>
 
-<.modal
-  :if={@live_action in [:new, :edit]}
-  id="performance-modal"
-  show
-  on_cancel={JS.patch(~p"/performances")}
->
-  <.live_component
-    module={PtaWeb.PerformanceLive.FormComponent}
-    id={@performance.id || :new}
-    title={@page_title}
-    action={@live_action}
-    performance={@performance}
-    patch={~p"/performances"}
-  />
-</.modal>
+  <%= for performance <- @performances do %>
+  <tr>
+    <td class="border"><%= performance.venue %></td>
+    <td class="border"><%= performance.name %></td>
+    <td class="border"><%= performance.performer %></td>
+    <td class="border"><%= DisplayFormatting.format_standard_date(performance.date) %></td>
+    <td class="border"><%= DisplayFormatting.format_standard_time(performance.start_time) %></td>
+  </tr>
+  <% end %>
+</table>

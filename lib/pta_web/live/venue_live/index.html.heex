@@ -1,4 +1,28 @@
-<.header>
+<h1 class="text-xl text-transform: uppercase">
+  Listing Venues
+</h1>
+
+<table id="venues" class="border border-separate border-spacing-1 table-auto">
+  <tr>
+    <th class="border">Name</th>
+    <th class="border">Address</th>
+    <th class="border">City</th>
+    <th class="border">State</th>
+    <th class="border">Zip</th>
+  </tr>
+
+  <%= for venue <- @venues do %>
+  <tr>
+    <td class="border"><%= venue.name %></td>
+    <td class="border"><%= venue.address %></td>
+    <td class="border"><%= venue.city %></td>
+    <td class="border"><%= venue.state %></td>
+    <td class="border"><%= venue.zip %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%!-- <.header>
   Listing Venues
   <:actions>
     <.link patch={~p"/venues/new"}>
@@ -42,4 +66,4 @@
     venue={@venue}
     patch={~p"/venues"}
   />
-</.modal>
+</.modal> --%>

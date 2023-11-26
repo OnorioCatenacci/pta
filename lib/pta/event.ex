@@ -103,6 +103,13 @@ defmodule Pta.Event do
   end
 
   alias Pta.Event.Performance
+# I want to share these values with the index module for the performances liveview
+
+  Module.register_attribute(__MODULE__,:no_venue, persist: true)
+  Module.register_attribute(__MODULE__,:no_date, persist: true)
+
+  @no_venue -1
+  @no_date nil
 
   @doc """
   Returns the list of performances.
@@ -128,6 +135,23 @@ defmodule Pta.Event do
         }
 
     Repo.all(q)
+  end
+
+  def list_performances(filter) when is_map(filter) do
+    from(Performance)
+    |> filter_by_venue(filter)
+    |> filter_by_date(filter)
+    |> Repo.all
+  end
+
+  defp filter_by_venue(query, %Performance{venue_id: @no_venue}), do: query
+  defp filter_by_venue(query, %Performance{venue_id: venue}) do
+    where(query, venue_id: ^venue)
+  end
+
+  defp filter_by_date(query, %Performance{date: @no_date}), do: query
+  defp filter_by_date(query, %Performance{date: date}) do
+    where(query, date: ^date)
   end
 
   @doc """
