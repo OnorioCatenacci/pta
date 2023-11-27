@@ -618,3 +618,115 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   start_time: Time.from_iso8601!("18:00:00-05:00"),
   event_hash: calculate_event_hash(fh_id,"2024-07-16","18:00:00-05:00")
 })
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: 1,
+  name: "Summer Camp With Trucks Tour",
+  date: Date.from_iso8601!("2024-06-06"),
+  performer: "Hootie & The Blowfish wsg Collective Soul and Edwin McCain",
+  start_time: Time.from_iso8601!("19:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: 1,
+  name: "Mule Pull '24 Tour",
+  date: Date.from_iso8601!("2024-06-11"),
+  performer: "Tyler Chilers wsg S. G. Goodman",
+  start_time: Time.from_iso8601!("19:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: 1,
+  name: "Magic Summer Tour",
+  date: Date.from_iso8601!("2024-06-18"),
+  performer: "New Kids On The Block wsg Paula Abdul and D. J. Jazzy Jeff",
+  start_time: Time.from_iso8601!("19:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: 1,
+  name: "The Show",
+  date: Date.from_iso8601!("2024-07-10"),
+  performer: "Niall Horan",
+  start_time: Time.from_iso8601!("19:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: 1,
+  name: "Triple Moon Tour",
+  date: Date.from_iso8601!("2024-07-16"),
+  performer: "Alanis Morissette wsg Joan Jett & the Blackhearts and Morgan Wade",
+  start_time: Time.from_iso8601!("19:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: 1,
+  name: "Heart & Soul 2024 Tour",
+  date: Date.from_iso8601!("2024-07-17"),
+  performer: "Earth, Wind & Fire And Chicago",
+  start_time: Time.from_iso8601!("19:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: 1,
+  name: "Summer of '99 Tour",
+  date: Date.from_iso8601!("2024-07-31"),
+  performer: "Creed wsg 3 Doors Down and Finger Eleven",
+  start_time: Time.from_iso8601!("19:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: 1,
+  name: "The Best of All Worlds",
+  date: Date.from_iso8601!("2024-08-02"),
+  performer: "Sammy Hagar wsg Loverboy",
+  start_time: Time.from_iso8601!("19:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: 1,
+  name: "Seasons 2024 World Tour",
+  date: Date.from_iso8601!("2024-08-06"),
+  performer: "Thirty Seconds To Mars wsg AFI, Poppy and Kennyhoopla",
+  start_time: Time.from_iso8601!("18:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: 1,
+  name: "The Sharp Dressed Simple Man Tour",
+  date: Date.from_iso8601!("2024-09-13"),
+  performer: "Lynyrd Skynyrd + ZZ Top wsg The Outlaws",
+  start_time: Time.from_iso8601!("18:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: 3,
+  name: "The CAVES World Tour",
+  date: Date.from_iso8601!("2024-05-29"),
+  performer: "NEEDTOBREATHE wsg Judah & The Lion",
+  start_time: Time.from_iso8601!("19:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: 3,
+  name: "Burn It Down Tour 2024",
+  date: Date.from_iso8601!("2024-06-08"),
+  performer: "Parker McCollum wsg Corey Kent",
+  start_time: Time.from_iso8601!("19:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: 3,
+  name: "Think Later Tour",
+  date: Date.from_iso8601!("2024-07-28"),
+  performer: "Tate McRae wsg Presley Regier",
+  start_time: Time.from_iso8601!("20:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: 3,
+  name: "O.A.R. Summer Tour 24",
+  date: Date.from_iso8601!("2024-08-24"),
+  performer: "O.A.R. wsg Fitz and The Tantrums",
+  start_time: Time.from_iso8601!("18:55:00-05:00")
+})
