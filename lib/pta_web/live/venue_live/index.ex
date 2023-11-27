@@ -4,9 +4,27 @@ defmodule PtaWeb.VenueLive.Index do
   alias Pta.Event
   alias Pta.Event.Venue
 
+  def get_nocity do
+    [no_city] = Event.__info__(:attributes)[:no_city]
+    no_city
+  end
+
+  def get_nozip do
+    [no_zip] = Event.__info__(:attributes)[:no_zip]
+    no_zip
+  end
+
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, stream(socket, :venues, Event.list_venues())}
+    socket =
+      assign(socket,
+        filter: %{city: get_nocity(), zip: get_nozip()},
+        unique_cities: Event.get_all_unique_cities(),
+        unique_zipcodes: Event.get_all_unique_zipcodes(),
+        venues: Event.list_venues()
+      )
+
+    {:ok, socket}
   end
 
   @impl true
@@ -43,5 +61,20 @@ defmodule PtaWeb.VenueLive.Index do
     {:ok, _} = Event.delete_venue(venue)
 
     {:noreply, stream_delete(socket, :venues, venue)}
+  end
+
+  def handle_event("filter", %{"city" => city, "zipcode" => zip}, socket) do
+    filter = %{city: city, zip: zip}
+    venues = Event.list_venues(filter)
+
+    socket =
+      assign(socket,
+        filter: filter,
+        unique_cities: Event.get_all_unique_cities(),
+        unique_zipcodes: Event.get_all_unique_zipcodes(),
+        venues: venues
+      )
+
+    {:noreply, socket}
   end
 end

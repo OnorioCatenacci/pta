@@ -8,6 +8,12 @@ defmodule Pta.Event do
 
   alias Pta.Event.Venue
 
+  Module.register_attribute(__MODULE__, :no_city, persist: true)
+  Module.register_attribute(__MODULE__, :no_zip, persist: true)
+
+  @no_city ""
+  @no_zip ""
+
   @doc """
   Returns the list of venues.
 
@@ -19,6 +25,27 @@ defmodule Pta.Event do
   """
   def list_venues do
     Repo.all(Venue)
+  end
+
+  def list_venues(filter) when is_map(filter) do
+    from(
+      Venue
+      |> filter_by_city(filter)
+      |> filter_by_zip(filter)
+    )
+    |> Repo.all()
+  end
+
+  defp filter_by_city(query, %{city: @no_city}), do: query
+
+  defp filter_by_city(query, %{city: city}) do
+    where(query, city: ^city)
+  end
+
+  defp filter_by_zip(query, %{zip: @no_zip}), do: query
+
+  defp filter_by_zip(query, %{zip: zip}) do
+    where(query, zip: ^zip)
   end
 
   @doc """
@@ -103,10 +130,11 @@ defmodule Pta.Event do
   end
 
   alias Pta.Event.Performance
-# I want to share these values with the index module for the performances liveview
 
-  Module.register_attribute(__MODULE__,:no_venue, persist: true)
-  Module.register_attribute(__MODULE__,:no_date, persist: true)
+  # I want to share these values with the index module for the performances liveview
+
+  Module.register_attribute(__MODULE__, :no_venue, persist: true)
+  Module.register_attribute(__MODULE__, :no_date, persist: true)
 
   @no_venue -1
   @no_date nil
@@ -141,15 +169,17 @@ defmodule Pta.Event do
     from(Performance)
     |> filter_by_venue(filter)
     |> filter_by_date(filter)
-    |> Repo.all
+    |> Repo.all()
   end
 
   defp filter_by_venue(query, %Performance{venue_id: @no_venue}), do: query
+
   defp filter_by_venue(query, %Performance{venue_id: venue}) do
     where(query, venue_id: ^venue)
   end
 
   defp filter_by_date(query, %Performance{date: @no_date}), do: query
+
   defp filter_by_date(query, %Performance{date: date}) do
     where(query, date: ^date)
   end
@@ -249,5 +279,22 @@ defmodule Pta.Event do
   """
   def change_performance(%Performance{} = performance, attrs \\ %{}) do
     Performance.changeset(performance, attrs)
+  end
+
+  # Utilities for filtering
+  def get_all_unique_cities() do
+    from(v in Venue,
+      select: v.city,
+      distinct: true
+    )
+    |> Repo.all()
+  end
+
+  def get_all_unique_zipcodes() do
+    from(v in Venue,
+      select: v.zip,
+      distinct: true
+    )
+    |> Repo.all()
   end
 end

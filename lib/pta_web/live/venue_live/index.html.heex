@@ -2,68 +2,40 @@
   Listing Venues
 </h1>
 
-<table id="venues" class="border border-separate border-spacing-1 table-auto">
-  <tr>
-    <th class="border">Name</th>
-    <th class="border">Address</th>
-    <th class="border">City</th>
-    <th class="border">State</th>
-    <th class="border">Zip</th>
-  </tr>
+<form phx-change="filter">
+  <table id="venues" class="border border-separate border-spacing-1 table-auto">
+    <tr>
+      <th class="border">Name</th>
+      <th class="border">Address</th>
+      <th class="border">City</th>
+      <th class="border">State</th>
+      <th class="border">Zip</th>
+    </tr>
 
-  <%= for venue <- @venues do %>
-  <tr>
-    <td class="border"><%= venue.name %></td>
-    <td class="border"><%= venue.address %></td>
-    <td class="border"><%= venue.city %></td>
-    <td class="border"><%= venue.state %></td>
-    <td class="border"><%= venue.zip %></td>
-  </tr>
-  <% end %>
-</table>
-
-<%!-- <.header>
-  Listing Venues
-  <:actions>
-    <.link patch={~p"/venues/new"}>
-      <.button>New Venue</.button>
-    </.link>
-  </:actions>
-</.header>
-
-<.table
-  id="venues"
-  rows={@streams.venues}
-  row_click={fn {_id, venue} -> JS.navigate(~p"/venues/#{venue}") end}
->
-  <:col :let={{_id, venue}} label="Name"><%= venue.name %></:col>
-  <:col :let={{_id, venue}} label="Address"><%= venue.address %></:col>
-  <:col :let={{_id, venue}} label="City"><%= venue.city %></:col>
-  <:col :let={{_id, venue}} label="State"><%= venue.state %></:col>
-  <:col :let={{_id, venue}} label="Zip"><%= venue.zip %></:col>
-  <:action :let={{_id, venue}}>
-    <div class="sr-only">
-      <.link navigate={~p"/venues/#{venue}"}>Show</.link>
-    </div>
-    <.link patch={~p"/venues/#{venue}/edit"}>Edit</.link>
-  </:action>
-  <:action :let={{id, venue}}>
-    <.link
-      phx-click={JS.push("delete", value: %{id: venue.id}) |> hide("##{id}")}
-      data-confirm="Are you sure?"
-    >
-      Delete
-    </.link>
-  </:action>
-</.table>
-
-<.modal :if={@live_action in [:new, :edit]} id="venue-modal" show on_cancel={JS.patch(~p"/venues")}>
-  <.live_component
-    module={PtaWeb.VenueLive.FormComponent}
-    id={@venue.id || :new}
-    title={@page_title}
-    action={@live_action}
-    venue={@venue}
-    patch={~p"/venues"}
-  />
-</.modal> --%>
+    <%= for venue <- @venues do %>
+      <tr>
+        <td class="border"><%= venue.name %></td>
+        <td class="border"><%= venue.address %></td>
+        <td class="border"><%= venue.city %></td>
+        <td class="border"><%= venue.state %></td>
+        <td class="border"><%= venue.zip %></td>
+      </tr>
+    <% end %>
+  </table>
+  <div class="filters">
+    <label for="filter-city">Filter By City:</label>
+    <select id="filter-city" name="city">
+      <%= Phoenix.HTML.Form.options_for_select(
+        @unique_cities,
+        @filter.city
+      ) %>
+    </select>
+    <label for="filter-zip">Filter By Zip Code:</label>
+    <select id="filter-zip" name="zipcode">
+      <%= Phoenix.HTML.Form.options_for_select(
+        @unique_zipcodes,
+        @filter.zip
+      ) %>
+    </select>
+  </div>
+</form>
