@@ -28,11 +28,9 @@ defmodule Pta.Event do
   end
 
   def list_venues(filter) when is_map(filter) do
-    from(
-      Venue
-      |> filter_by_city(filter)
-      |> filter_by_zip(filter)
-    )
+    from(Venue)
+    |> filter_by_city(filter)
+    |> filter_by_zip(filter)
     |> Repo.all()
   end
 
@@ -167,20 +165,21 @@ defmodule Pta.Event do
 
   def list_performances(filter) when is_map(filter) do
     from(Performance)
+    |> preload(:Venue)
     |> filter_by_venue(filter)
     |> filter_by_date(filter)
     |> Repo.all()
   end
 
-  defp filter_by_venue(query, %Performance{venue_id: @no_venue}), do: query
+  defp filter_by_venue(query, %{venue: @no_venue}), do: query
 
-  defp filter_by_venue(query, %Performance{venue_id: venue}) do
-    where(query, venue_id: ^venue)
+  defp filter_by_venue(query, %{venue: venue_id}) do
+    where(query, venue_id: ^String.to_integer(venue_id))
   end
 
-  defp filter_by_date(query, %Performance{date: @no_date}), do: query
+  defp filter_by_date(query, %{date: @no_date}), do: query
 
-  defp filter_by_date(query, %Performance{date: date}) do
+  defp filter_by_date(query, %{date: date}) do
     where(query, date: ^date)
   end
 
@@ -293,6 +292,24 @@ defmodule Pta.Event do
   def get_all_unique_zipcodes() do
     from(v in Venue,
       select: v.zip,
+      distinct: true
+    )
+    |> Repo.all()
+  end
+
+  def get_all_unique_venues() do
+    from(p in Performance,
+      join: v in Venue,
+      on: p.venue_id == v.id,
+      select: [v.id, v.name],
+      distinct: true
+    )
+    |> Repo.all()
+  end
+
+  def get_all_unique_performance_dates() do
+    from(p in Performance,
+      select: p.date,
       distinct: true
     )
     |> Repo.all()

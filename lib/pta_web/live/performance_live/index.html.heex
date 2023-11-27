@@ -2,22 +2,48 @@
   Listing Performances
 </h1>
 
-<table id="performances" class="border border-separate border-spacing-1 table-auto">
-  <tr>
-    <th class="border">Venue</th>
-    <th class="border">Name</th>
-    <th class="border">Performer</th>
-    <th class="border">Date</th>
-    <th class="border">Start Time</th>
-  </tr>
+<form phx-change="filter">
+  <table id="performances" class="border border-separate border-spacing-1 table-auto">
+    <tr>
+      <th class="border">Venue</th>
+      <th class="border">Name</th>
+      <th class="border">Performer</th>
+      <th class="border">Date</th>
+      <th class="border">Start Time</th>
+    </tr>
 
-  <%= for performance <- @performances do %>
-  <tr>
-    <td class="border"><%= performance.venue %></td>
-    <td class="border"><%= performance.name %></td>
-    <td class="border"><%= performance.performer %></td>
-    <td class="border"><%= DisplayFormatting.format_standard_date(performance.date) %></td>
-    <td class="border"><%= DisplayFormatting.format_standard_time(performance.start_time) %></td>
-  </tr>
-  <% end %>
-</table>
+    <%= for performance <- @performances do %>
+      <tr>
+        <td class="border"><%= performance.venue %></td>
+        <td class="border"><%= performance.name %></td>
+        <td class="border"><%= performance.performer %></td>
+        <td class="border"><%= DisplayFormatting.format_standard_date(performance.date) %></td>
+        <td class="border">
+          <%= DisplayFormatting.format_standard_time(performance.start_time) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <div class="filters">
+    <label for="filter-venue">Filter By Venue</label>
+    <select id="filter-venue" name="venue">
+      <%= for [id, name] <- @unique_venues do %>
+        <%= if id == @filter.venue do %>
+          <option value={id} selected><%= name %></option>
+        <% else %>
+          <option value={id}><%= name %></option>
+        <% end %>
+      <% end %>
+    </select>
+    <label for="filter-date">Filter By Peformance Date:</label>
+    <select id="filter-date" name="date">
+      <%= for performance_date <- @unique_performance_dates do %>
+        <%= if performance_date == @filter.date do %>
+          <option value={performance_date} selected><%= performance_date %></option>
+        <% else %>
+          <option value={performance_date}><%= performance_date %></option>
+        <% end %>
+      <% end %>
+    </select>
+  </div>
+</form>
