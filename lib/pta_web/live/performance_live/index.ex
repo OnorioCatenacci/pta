@@ -17,9 +17,11 @@ defmodule PtaWeb.PerformanceLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    socket = assign(socket,
-    filter: %{venue: get_novenue(), date: get_nodate()},
-    performances: Event.list_performances())
+    socket =
+      assign(socket,
+        filter: %{venue: get_novenue(), date: get_nodate()},
+        performances: Event.list_performances()
+      )
 
     {:ok, socket}
   end
@@ -58,5 +60,11 @@ defmodule PtaWeb.PerformanceLive.Index do
     {:ok, _} = Event.delete_performance(performance)
 
     {:noreply, stream_delete(socket, :performances, performance)}
+  end
+
+  def performance(assigns) do
+    ~H"""
+    <td class="border"><%= render_slot(@inner_block) %></td>
+    """
   end
 end

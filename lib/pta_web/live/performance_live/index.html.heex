@@ -12,12 +12,14 @@
   </tr>
 
   <%= for performance <- @performances do %>
-  <tr>
-    <td class="border"><%= performance.venue %></td>
-    <td class="border"><%= performance.name %></td>
-    <td class="border"><%= performance.performer %></td>
-    <td class="border"><%= DisplayFormatting.format_standard_date(performance.date) %></td>
-    <td class="border"><%= DisplayFormatting.format_standard_time(performance.start_time) %></td>
-  </tr>
+    <tr>
+      <.performance><%= performance.venue %></.performance>
+      <.performance><%= performance.name %></.performance>
+      <.performance><%= performance.performer %></.performance>
+      <.performance><%= DisplayFormatting.format_standard_date(performance.date) %></.performance>
+      <.performance>
+        <%= DisplayFormatting.format_standard_time(performance.start_time) %>
+      </.performance>
+    </tr>
   <% end %>
 </table>

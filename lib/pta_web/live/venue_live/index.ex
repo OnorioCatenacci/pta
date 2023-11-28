@@ -77,4 +77,10 @@ defmodule PtaWeb.VenueLive.Index do
 
     {:noreply, socket}
   end
+
+  def venue(assigns) do
+    ~H"""
+    <td class="border"><%= render_slot(@inner_block) %></td>
+    """
+  end
 end
