@@ -1,6 +1,7 @@
 defmodule PtaWeb.VenueLive.Index do
   use PtaWeb, :live_view
 
+  alias PtaWeb.PtaComponents, as: Pc
   alias Pta.Event
   alias Pta.Event.Venue
 

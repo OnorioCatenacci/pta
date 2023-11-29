@@ -5,20 +5,20 @@
 <form phx-change="filter">
   <table id="venues" class="border border-separate border-spacing-1 table-auto">
     <tr>
-      <th class="border">Name</th>
-      <th class="border">Address</th>
-      <th class="border">City</th>
-      <th class="border">State</th>
-      <th class="border">Zip</th>
+      <Pc.col_header>Name</Pc.col_header>
+      <Pc.col_header>Address</Pc.col_header>
+      <Pc.col_header>City</Pc.col_header>
+      <Pc.col_header>State</Pc.col_header>
+      <Pc.col_header>Zip</Pc.col_header>
     </tr>
 
     <%= for venue <- @venues do %>
       <tr>
-        <td class="border"><%= venue.name %></td>
-        <td class="border"><%= venue.address %></td>
-        <td class="border"><%= venue.city %></td>
-        <td class="border"><%= venue.state %></td>
-        <td class="border"><%= venue.zip %></td>
+        <Pc.cell><%= venue.name %></Pc.cell>
+        <Pc.cell><%= venue.address %></Pc.cell>
+        <Pc.cell><%= venue.city %></Pc.cell>
+        <Pc.cell><%= venue.state %></Pc.cell>
+        <Pc.cell><%= venue.zip %></Pc.cell>
       </tr>
     <% end %>
   </table>
