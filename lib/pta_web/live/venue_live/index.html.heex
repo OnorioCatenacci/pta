@@ -5,11 +5,21 @@
 <form phx-change="filter">
   <table id="venues" class="border border-separate border-spacing-1 table-auto">
     <tr>
-      <th class="border">Name</th>
-      <th class="border">Address</th>
-      <th class="border">City</th>
-      <th class="border">State</th>
-      <th class="border">Zip</th>
+      <th class="border">
+        <.sort_link @sort_by="Name" @sort_order="asc">Name</.sort_link>
+      </th>
+      <th class="border">
+        <.sort_link>Address</.sort_link>
+      </th>
+      <.sort_link>
+        <th class="border">City</th>
+      </.sort_link>
+      <.sort_link>
+        <th class="border">State</th>
+      </.sort_link>
+      <.sort_link>
+        <th class="border">Zip</th>
+      </.sort_link>
     </tr>
 
     <%= for venue <- @venues do %>

@@ -27,11 +27,12 @@ defmodule Pta.Event do
     Repo.all(Venue)
   end
 
-  def list_venues(filter) when is_map(filter) do
+  def list_venues(filter, options) when is_map(filter) and is_map(options) do
     from(
       Venue
       |> filter_by_city(filter)
       |> filter_by_zip(filter)
+      |> sort_venue(options)
     )
     |> Repo.all()
   end
@@ -47,6 +48,12 @@ defmodule Pta.Event do
   defp filter_by_zip(query, %{zip: zip}) do
     where(query, zip: ^zip)
   end
+
+  defp sort_venue(query, %{sort_by: sort_by, sort_order: sort_order}) do
+    order_by(query, {^sort_order, ^sort_by})
+  end
+
+  defp sort_venue(query, _options), do: query
 
   @doc """
   Gets a single venue.
@@ -274,7 +281,9 @@ defmodule Pta.Event do
   ## Examples
 
       iex> change_performance(performance)
-      %Ecto.Changeset{data: %Performance{}}
+      %Ecto.Changesetdefp sort(query, _options), do: query
+
+  {data: %Performance{}}
 
   """
   def change_performance(%Performance{} = performance, attrs \\ %{}) do

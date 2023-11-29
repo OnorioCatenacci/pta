@@ -21,6 +21,7 @@ defmodule PtaWeb.VenueLive.Index do
         filter: %{city: get_nocity(), zip: get_nozip()},
         unique_cities: Event.get_all_unique_cities(),
         unique_zipcodes: Event.get_all_unique_zipcodes(),
+        sort: %{sort_by: :name, sort_order: :asc},
         venues: Event.list_venues()
       )
 
@@ -65,7 +66,8 @@ defmodule PtaWeb.VenueLive.Index do
 
   def handle_event("filter", %{"city" => city, "zipcode" => zip}, socket) do
     filter = %{city: city, zip: zip}
-    venues = Event.list_venues(filter)
+    sort_options = %{sort_by: "", sort_order: :asc}
+    venues = Event.list_venues(filter, sort_options)
 
     socket =
       assign(socket,
@@ -78,9 +80,24 @@ defmodule PtaWeb.VenueLive.Index do
     {:noreply, socket}
   end
 
+  def handle_event("sort", %{"sort_order" => _sort_order, "sort_by" => _sort_by}, socket) do
+    {:noreply, socket}
+  end
+
   def venue(assigns) do
     ~H"""
     <td class="border"><%= render_slot(@inner_block) %></td>
+    """
+  end
+
+  attr sort_by, :string
+  attr sort_order, :string
+
+  def sort_link(assigns) do
+    ~H"""
+    <.link patch={~p"/venues?#{%{sort_by: @sort_by, sort_order: @sort_order}}"}>
+      @render_slot(@inner_block)
+    </.link>
     """
   end
 end
