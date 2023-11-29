@@ -4,6 +4,7 @@ defmodule PtaWeb.PerformanceLive.Index do
   alias Pta.Event
   alias Pta.Event.Performance
   alias Pta.DisplayFormatting
+  alias PtaWeb.PtaComponents, as: Pc
 
   def get_novenue do
     [no_venue] = Event.__info__(:attributes)[:no_venue]
@@ -17,9 +18,11 @@ defmodule PtaWeb.PerformanceLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    socket = assign(socket,
-    filter: %{venue: get_novenue(), date: get_nodate()},
-    performances: Event.list_performances())
+    socket =
+      assign(socket,
+        filter: %{venue: get_novenue(), date: get_nodate()},
+        performances: Event.list_performances()
+      )
 
     {:ok, socket}
   end

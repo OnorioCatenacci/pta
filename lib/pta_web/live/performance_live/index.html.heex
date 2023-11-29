@@ -4,22 +4,22 @@
 
 <table id="performances" class="border border-separate border-spacing-1 table-auto">
   <tr>
-    <th class="border">Venue</th>
-    <th class="border">Name</th>
-    <th class="border">Performer</th>
-    <th class="border">Date</th>
-    <th class="border">Start Time</th>
+    <Pc.col_header>Venue</Pc.col_header>
+    <Pc.col_header>Name</Pc.col_header>
+    <Pc.col_header>Performer</Pc.col_header>
+    <Pc.col_header>Date</Pc.col_header>
+    <Pc.col_header>Start Time</Pc.col_header>
   </tr>
 
   <%= for performance <- @performances do %>
     <tr>
-      <td class="border"><%= performance.venue %></td>
-      <td class="border"><%= performance.name %></td>
-      <td class="border"><%= performance.performer %></td>
-      <td class="border"><%= DisplayFormatting.format_standard_date(performance.date) %></td>
-      <td class="border">
+      <Pc.cell><%= performance.venue %></Pc.cell>
+      <Pc.cell><%= performance.name %></Pc.cell>
+      <Pc.cell><%= performance.performer %></Pc.cell>
+      <Pc.cell><%= DisplayFormatting.format_standard_date(performance.date) %></Pc.cell>
+      <Pc.cell>
         <%= DisplayFormatting.format_standard_time(performance.start_time) %>
-      </td>
+      </Pc.cell>
     </tr>
   <% end %>
 </table>
