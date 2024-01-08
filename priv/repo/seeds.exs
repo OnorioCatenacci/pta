@@ -108,6 +108,30 @@ Pta.Repo.insert!(%Pta.Event.Performance{
 
 Pta.Repo.insert!(%Pta.Event.Performance{
   venue_id: pk_id,
+  name: "Renegades & Juke Box Heroes Tour",
+  date: Date.from_iso8601!("2024-06-15"),
+  performer: "Styx, Foreigner wsg John Waite",
+  start_time: Time.from_iso8601!("18:45:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: pk_id,
+  name: "45 Years of Family Tradition",
+  date: Date.from_iso8601!("2024-06-22"),
+  performer: "Hank Williams, Jr. wsg Marty Stuart & His Fabulous Superlatives",
+  start_time: Time.from_iso8601!("19:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: pk_id,
+  name: "Loserville Tour",
+  date: Date.from_iso8601!("2024-07-23"),
+  performer: "Limp Bizkit wsg Bones, N8NOFACE, Corey Feldman",
+  start_time: Time.from_iso8601!("18:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: pk_id,
   name: "Summer Camp With Trucks Tour",
   date: Date.from_iso8601!("2024-06-06"),
   performer: "Hootie & The Blowfish wsg Collective Soul and Edwin McCain",
@@ -216,4 +240,12 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-08-24"),
   performer: "O.A.R. wsg Fitz and The Tantrums",
   start_time: Time.from_iso8601!("18:55:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fh_id,
+  name: "Fumbling Toward Ecstasy Tour",
+  date: Date.from_iso8601!("2024-06-13"),
+  performer: "Sarah McLachlan wsg FEIST",
+  start_time: Time.from_iso8601!("19:30:00-05:00")
 })
