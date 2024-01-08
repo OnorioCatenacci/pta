@@ -97,6 +97,243 @@ end
 pk_id = Lookup.get_id_for_venue_name("Pine Knob Music Theater")
 # AKA Freedom Hill Amphitheatre
 fh_id = Lookup.get_id_for_venue_name("Michigan Lottery Amphitheatre")
+lca_id = Lookup.get_id_for_venue_name("Little Caesars Arena")
+fox_id = Lookup.get_id_for_venue_name("Fox Theatre")
+cpk_id = Lookup.get_id_for_venue_name("Comerica Park")
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: lca_id,
+  name: "Duel in the D",
+  date: Date.from_iso8601!("2024-02-10"),
+  performer: "MSU v. U of M",
+  start_time: Time.from_iso8601!("20:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: lca_id,
+  name: "Bill Burr Live",
+  date: Date.from_iso8601!("2024-03-10"),
+  performer: "Bill Burr",
+  start_time: Time.from_iso8601!("20:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: lca_id,
+  name: "The Love Hard Tour",
+  date: Date.from_iso8601!("2024-03-03"),
+  performer: "Keyshia Cole, Trey Songz, Jaheim and K. Michelle",
+  start_time: Time.from_iso8601!("19:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: lca_id,
+  name: "Back to the Honky Tonk Tour",
+  date: Date.from_iso8601!("2024-02-23"),
+  performer: "Blake Shelton",
+  start_time: Time.from_iso8601!("20:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: lca_id,
+  name: "2024 NCAA Division I Men's Basketball Tournament Regionals",
+  date: Date.from_iso8601!("2024-03-29"),
+  performer: "TBD",
+  start_time: Time.from_iso8601!("20:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: lca_id,
+  name: "2024 NCAA Division I Men's Basketball Tournament Regionals",
+  date: Date.from_iso8601!("2024-03-31"),
+  performer: "TBD",
+  start_time: Time.from_iso8601!("20:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "On Your Feet!",
+  date: Date.from_iso8601!("2024-02-23"),
+  performer: "On Your Feet (Touring)",
+  start_time: Time.from_iso8601!("19:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "On Your Feet!",
+  date: Date.from_iso8601!("2024-02-24"),
+  performer: "On Your Feet (Touring)",
+  start_time: Time.from_iso8601!("14:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "On Your Feet!",
+  date: Date.from_iso8601!("2024-02-24"),
+  performer: "On Your Feet (Touring)",
+  start_time: Time.from_iso8601!("19:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "The Great Pirate Adventure",
+  date: Date.from_iso8601!("2024-03-02"),
+  performer: "Paw Patrol Live!",
+  start_time: Time.from_iso8601!("10:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "The Great Pirate Adventure",
+  date: Date.from_iso8601!("2024-03-02"),
+  performer: "Paw Patrol Live!",
+  start_time: Time.from_iso8601!("14:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "The Great Pirate Adventure",
+  date: Date.from_iso8601!("2024-03-02"),
+  performer: "Paw Patrol Live!",
+  start_time: Time.from_iso8601!("18:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "The Great Pirate Adventure",
+  date: Date.from_iso8601!("2024-03-03"),
+  performer: "Paw Patrol Live!",
+  start_time: Time.from_iso8601!("10:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "The Great Pirate Adventure",
+  date: Date.from_iso8601!("2024-03-03"),
+  performer: "Paw Patrol Live!",
+  start_time: Time.from_iso8601!("14:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "Fan Love Tour",
+  date: Date.from_iso8601!("2024-03-10"),
+  performer: "Kayla Nicole, That Girl LAY LAY, Young Dylan, WanMor, Papa Jay, Breez Kennedy, D Sturdy, Citi Limitz, Rocco Lupo wsg King Harris",
+  start_time: Time.from_iso8601!("18:00:00-05:00")
+})
+
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "Still Not Canceled",
+  date: Date.from_iso8601!("2024-04-12"),
+  performer: "Jeff Dunham",
+  start_time: Time.from_iso8601!("19:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "Still Not Canceled",
+  date: Date.from_iso8601!("2024-04-13"),
+  performer: "Jeff Dunham",
+  start_time: Time.from_iso8601!("15:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "We Who Wrestle With God Tour",
+  date: Date.from_iso8601!("2024-03-11"),
+  performer: "Dr. Jordan B Peterson",
+  start_time: Time.from_iso8601!("19:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "TakeOver 5",
+  date: Date.from_iso8601!("2024-03-16"),
+  performer: "Gucci Mane, Rick Ross, Plies, Juvenile and Trina",
+  start_time: Time.from_iso8601!("20:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "The Goodness Tour",
+  date: Date.from_iso8601!("2024-03-21"),
+  performer: "Cece Winans",
+  start_time: Time.from_iso8601!("19:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "The Second Best Night of Your Life",
+  date: Date.from_iso8601!("2024-03-22"),
+  performer: "Brett Goldstein",
+  start_time: Time.from_iso8601!("19:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "Pink Friday 2 World Tour",
+  date: Date.from_iso8601!("2024-04-20"),
+  performer: "Nicki Minaj",
+  start_time: Time.from_iso8601!("20:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "Annie",
+  date: Date.from_iso8601!("2024-05-03"),
+  performer: "Annie (Touring)",
+  start_time: Time.from_iso8601!("19:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "Annie",
+  date: Date.from_iso8601!("2024-05-04"),
+  performer: "Annie (Touring)",
+  start_time: Time.from_iso8601!("14:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "Annie",
+  date: Date.from_iso8601!("2024-05-04"),
+  performer: "Annie (Touring)",
+  start_time: Time.from_iso8601!("19:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "Annie",
+  date: Date.from_iso8601!("2024-05-05"),
+  performer: "Annie (Touring)",
+  start_time: Time.from_iso8601!("13:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "Annie",
+  date: Date.from_iso8601!("2024-05-05"),
+  performer: "Annie (Touring)",
+  start_time: Time.from_iso8601!("18:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: cpk_id,
+  name: "Def Leppard/Journey",
+  date: Date.from_iso8601!("2024-07-18"),
+  performer: "Def Leppard, Journey wsg Steve Miller Band",
+  start_time: Time.from_iso8601!("18:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: cpk_id,
+  name: "The Saviors Tour",
+  date: Date.from_iso8601!("2024-09-04"),
+  performer: "Green Day wsg The Smashing Pumpkins, Rancid and The Linda Lindas",
+  start_time: Time.from_iso8601!("17:30:00-05:00")
+})
+
 
 Pta.Repo.insert!(%Pta.Event.Performance{
   venue_id: pk_id,
