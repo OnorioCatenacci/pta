@@ -66,14 +66,6 @@ Pta.Repo.insert!(%Pta.Event.Venue{
   zip: "48226"
 })
 
-Pta.Repo.insert!(%Pta.Event.Venue{
-  name: "Little Caesars Arena",
-  address: "2645 Woodward Avenue",
-  city: "Detroit",
-  state: "MI",
-  zip: "48201"
-})
-
 # While it may seem odd to add a module in here it allows me to
 # use the id's of the various venues without having to assume any particular
 # id in advance.  As it stands right now, id 1 is Pine Knob Music Theater and id 3 is
