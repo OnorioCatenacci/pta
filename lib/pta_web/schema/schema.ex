@@ -22,11 +22,16 @@ defmodule Pta.Web.Schema do
     end
   end
 
+  @desc "A performance at a specific venue"
   object :performance do
     field :id, :id
+    @desc "The name of the performance"
     field :name, :string
+    @desc "The date of the performance"
     field :date, :date
+    @desc "The name of the performer or performers"
     field :performer, :string
+    @desc "The time of the start of the performance (Eastern Standard Time)"
     field :start_time, :time
   end
 end
