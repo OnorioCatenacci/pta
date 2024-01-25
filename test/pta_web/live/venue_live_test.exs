@@ -4,8 +4,20 @@ defmodule PtaWeb.VenueLiveTest do
   import Phoenix.LiveViewTest
   import Pta.EventFixtures
 
-  @create_attrs %{name: "some name", state: "some state", zip: "some zip", address: "some address", city: "some city"}
-  @update_attrs %{name: "some updated name", state: "some updated state", zip: "some updated zip", address: "some updated address", city: "some updated city"}
+  @create_attrs %{
+    name: "some name",
+    state: "some state",
+    zip: "some zip",
+    address: "some address",
+    city: "some city"
+  }
+  @update_attrs %{
+    name: "some updated name",
+    state: "some updated state",
+    zip: "some updated zip",
+    address: "some updated address",
+    city: "some updated city"
+  }
   @invalid_attrs %{name: nil, state: nil, zip: nil, address: nil, city: nil}
 
   defp create_venue(_) do

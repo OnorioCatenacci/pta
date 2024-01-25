@@ -7,7 +7,7 @@ defmodule Pta.Event.Performance do
     field :date, :date
     field :performer, :string
     field :start_time, :time
-    field :event_hash, :string
+    field :event_hash, :binary
     belongs_to :venue, Pta.Event.Venue
 
     timestamps()
@@ -21,8 +21,8 @@ defmodule Pta.Event.Performance do
   end
 
   def calculate_event_hash(venue_id, date, start_time) do
-      venue_string = Integer.to_string(venue_id)
-      hash_string = Enum.join([venue_string, date, start_time])
-      :crypto.hash(:sha, ~c("#{hash_string}"))
+    venue_string = Integer.to_string(venue_id)
+    hash_string = Enum.join([venue_string, date, start_time])
+    :crypto.hash(:sha, ~c("#{hash_string}"))
   end
 end

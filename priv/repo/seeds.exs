@@ -74,7 +74,6 @@ Pta.Repo.insert!(%Pta.Event.Venue{
   zip: "48201"
 })
 
-
 # While it may seem odd to add a module in here it allows me to
 # use the id's of the various venues without having to assume any particular
 # id in advance.  As it stands right now, id 1 is Pine Knob Music Theater and id 3 is
@@ -95,7 +94,7 @@ defmodule Lookup do
   end
 end
 
-import Pta.Event.Performance,  only: [calculate_event_hash: 3]
+import Pta.Event.Performance, only: [calculate_event_hash: 3]
 
 pk_id = Lookup.get_id_for_venue_name("Pine Knob Music Theater")
 # AKA Freedom Hill Amphitheatre
@@ -110,7 +109,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-02-10"),
   performer: "MSU v. U of M",
   start_time: Time.from_iso8601!("20:30:00-05:00"),
-  event_hash: calculate_event_hash(lca_id,"2024-02-10","20:30:00-05:00")
+  event_hash: calculate_event_hash(lca_id, "2024-02-10", "20:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -119,7 +118,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-03-10"),
   performer: "Bill Burr",
   start_time: Time.from_iso8601!("20:00:00-05:00"),
-  event_hash: calculate_event_hash(lca_id,"2024-03-10","20:00:00-05:00")
+  event_hash: calculate_event_hash(lca_id, "2024-03-10", "20:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -128,7 +127,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-03-03"),
   performer: "Keyshia Cole, Trey Songz, Jaheim and K. Michelle",
   start_time: Time.from_iso8601!("19:00:00-05:00"),
-  event_hash: calculate_event_hash(lca_id,"2024-03-03","19:00:00-05:00")
+  event_hash: calculate_event_hash(lca_id, "2024-03-03", "19:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -137,7 +136,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-02-23"),
   performer: "Blake Shelton",
   start_time: Time.from_iso8601!("20:00:00-05:00"),
-  event_hash: calculate_event_hash(lca_id,"2024-02-23","20:00:00-05:00")
+  event_hash: calculate_event_hash(lca_id, "2024-02-23", "20:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -146,7 +145,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-03-29"),
   performer: "TBD",
   start_time: Time.from_iso8601!("20:00:00-05:00"),
-  event_hash: calculate_event_hash(lca_id,"2024-03-29","20:00:00-05:00")
+  event_hash: calculate_event_hash(lca_id, "2024-03-29", "20:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -155,7 +154,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-03-31"),
   performer: "TBD",
   start_time: Time.from_iso8601!("20:00:00-05:00"),
-  event_hash: calculate_event_hash(lca_id,"2024-03-31","20:00:00-05:00")
+  event_hash: calculate_event_hash(lca_id, "2024-03-31", "20:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -164,7 +163,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-02-23"),
   performer: "On Your Feet (Touring)",
   start_time: Time.from_iso8601!("19:30:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-02-23","19:30:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-02-23", "19:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -173,7 +172,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-02-24"),
   performer: "On Your Feet (Touring)",
   start_time: Time.from_iso8601!("14:30:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-02-24","14:30:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-02-24", "14:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -182,7 +181,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-02-24"),
   performer: "On Your Feet (Touring)",
   start_time: Time.from_iso8601!("19:30:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-02-24","19:30:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-02-24", "19:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -191,7 +190,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-03-02"),
   performer: "Paw Patrol Live!",
   start_time: Time.from_iso8601!("10:00:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-03-02","10:00:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-03-02", "10:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -200,7 +199,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-03-02"),
   performer: "Paw Patrol Live!",
   start_time: Time.from_iso8601!("14:00:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-03-02","14:00:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-03-02", "14:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -209,7 +208,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-03-02"),
   performer: "Paw Patrol Live!",
   start_time: Time.from_iso8601!("18:00:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-03-02","18:00:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-03-02", "18:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -218,7 +217,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-03-03"),
   performer: "Paw Patrol Live!",
   start_time: Time.from_iso8601!("10:00:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-03-03","10:00:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-03-03", "10:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -227,18 +226,18 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-03-03"),
   performer: "Paw Patrol Live!",
   start_time: Time.from_iso8601!("14:00:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-03-03","14:00:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-03-03", "14:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
   venue_id: fox_id,
   name: "Fan Love Tour",
   date: Date.from_iso8601!("2024-03-10"),
-  performer: "Kayla Nicole, That Girl LAY LAY, Young Dylan, WanMor, Papa Jay, Breez Kennedy, D Sturdy, Citi Limitz, Rocco Lupo wsg King Harris",
+  performer:
+    "Kayla Nicole, That Girl LAY LAY, Young Dylan, WanMor, Papa Jay, Breez Kennedy, D Sturdy, Citi Limitz, Rocco Lupo wsg King Harris",
   start_time: Time.from_iso8601!("18:00:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-03-10","18:00:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-03-10", "18:00:00-05:00")
 })
-
 
 Pta.Repo.insert!(%Pta.Event.Performance{
   venue_id: fox_id,
@@ -246,7 +245,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-04-12"),
   performer: "Jeff Dunham",
   start_time: Time.from_iso8601!("19:00:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-04-12","19:00:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-04-12", "19:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -255,7 +254,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-04-13"),
   performer: "Jeff Dunham",
   start_time: Time.from_iso8601!("15:00:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-04-13","15:00:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-04-13", "15:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -264,7 +263,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-03-11"),
   performer: "Dr. Jordan B Peterson",
   start_time: Time.from_iso8601!("19:30:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-03-11","19:30:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-03-11", "19:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -273,7 +272,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-03-16"),
   performer: "Gucci Mane, Rick Ross, Plies, Juvenile and Trina",
   start_time: Time.from_iso8601!("20:00:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-03-16","20:00:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-03-16", "20:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -282,7 +281,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-03-21"),
   performer: "Cece Winans",
   start_time: Time.from_iso8601!("19:00:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-03-21","19:00:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-03-21", "19:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -291,7 +290,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-03-22"),
   performer: "Brett Goldstein",
   start_time: Time.from_iso8601!("19:00:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-03-22","19:00:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-03-22", "19:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -300,7 +299,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-04-20"),
   performer: "Nicki Minaj",
   start_time: Time.from_iso8601!("20:00:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-04-20","20:00:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-04-20", "20:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -309,7 +308,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-05-03"),
   performer: "Annie (Touring)",
   start_time: Time.from_iso8601!("19:30:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-05-03","19:30:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-05-03", "19:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -318,7 +317,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-05-04"),
   performer: "Annie (Touring)",
   start_time: Time.from_iso8601!("14:30:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-05-04","14:30:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-05-04", "14:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -327,7 +326,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-05-04"),
   performer: "Annie (Touring)",
   start_time: Time.from_iso8601!("19:30:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-05-04","19:30:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-05-04", "19:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -336,7 +335,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-05-05"),
   performer: "Annie (Touring)",
   start_time: Time.from_iso8601!("13:00:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-05-05","13:00:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-05-05", "13:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -345,7 +344,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-05-05"),
   performer: "Annie (Touring)",
   start_time: Time.from_iso8601!("18:30:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-05-05","18:30:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-05-05", "18:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -354,7 +353,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-07-18"),
   performer: "Def Leppard, Journey wsg Steve Miller Band",
   start_time: Time.from_iso8601!("18:00:00-05:00"),
-  event_hash: calculate_event_hash(cpk_id,"2024-07-18","18:00:00-05:00")
+  event_hash: calculate_event_hash(cpk_id, "2024-07-18", "18:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -363,9 +362,8 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-09-04"),
   performer: "Green Day wsg The Smashing Pumpkins, Rancid and The Linda Lindas",
   start_time: Time.from_iso8601!("17:30:00-05:00"),
-  event_hash: calculate_event_hash(cpk_id,"2024-09-04","17:30:00-05:00")
+  event_hash: calculate_event_hash(cpk_id, "2024-09-04", "17:30:00-05:00")
 })
-
 
 Pta.Repo.insert!(%Pta.Event.Performance{
   venue_id: pk_id,
@@ -373,7 +371,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-05-02"),
   performer: "Primus, Puscifer, and A Perfect Circle",
   start_time: Time.from_iso8601!("20:00:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-05-02","20:00:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-05-02", "20:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -382,7 +380,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-06-15"),
   performer: "Styx, Foreigner wsg John Waite",
   start_time: Time.from_iso8601!("18:45:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-06-15","18:45:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-06-15", "18:45:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -391,7 +389,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-06-22"),
   performer: "Hank Williams, Jr. wsg Marty Stuart & His Fabulous Superlatives",
   start_time: Time.from_iso8601!("19:00:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-06-22","19:00:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-06-22", "19:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -400,7 +398,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-07-23"),
   performer: "Limp Bizkit wsg Bones, N8NOFACE, Corey Feldman",
   start_time: Time.from_iso8601!("18:30:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-07-23","18:30:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-07-23", "18:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -409,7 +407,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-06-06"),
   performer: "Hootie & The Blowfish wsg Collective Soul and Edwin McCain",
   start_time: Time.from_iso8601!("19:00:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-06-06","19:00:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-06-06", "19:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -418,7 +416,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-06-11"),
   performer: "Tyler Chilers wsg S. G. Goodman",
   start_time: Time.from_iso8601!("19:30:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-06-11","19:30:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-06-11", "19:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -427,7 +425,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-06-18"),
   performer: "New Kids On The Block wsg Paula Abdul and D. J. Jazzy Jeff",
   start_time: Time.from_iso8601!("19:00:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-06-18","19:00:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-06-18", "19:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -436,7 +434,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-07-10"),
   performer: "Niall Horan",
   start_time: Time.from_iso8601!("19:30:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-07-10","19:30:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-07-10", "19:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -445,7 +443,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-07-16"),
   performer: "Alanis Morissette wsg Joan Jett & the Blackhearts and Morgan Wade",
   start_time: Time.from_iso8601!("19:00:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-07-16","19:00:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-07-16", "19:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -454,7 +452,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-07-17"),
   performer: "Earth, Wind & Fire And Chicago",
   start_time: Time.from_iso8601!("19:30:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-07-17","19:30:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-07-17", "19:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -463,7 +461,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-07-31"),
   performer: "Creed wsg 3 Doors Down and Finger Eleven",
   start_time: Time.from_iso8601!("19:00:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-07-31","19:00:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-07-31", "19:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -472,7 +470,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-08-02"),
   performer: "Sammy Hagar wsg Loverboy",
   start_time: Time.from_iso8601!("19:00:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-08-02","19:00:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-08-02", "19:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -481,7 +479,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-08-06"),
   performer: "Thirty Seconds To Mars wsg AFI, Poppy and Kennyhoopla",
   start_time: Time.from_iso8601!("18:30:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-08-06","18:30:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-08-06", "18:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -490,7 +488,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-09-13"),
   performer: "Lynyrd Skynyrd + ZZ Top wsg The Outlaws",
   start_time: Time.from_iso8601!("18:30:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-09-13","18:30:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-09-13", "18:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -499,7 +497,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-05-29"),
   performer: "NEEDTOBREATHE wsg Judah & The Lion",
   start_time: Time.from_iso8601!("19:00:00-05:00"),
-  event_hash: calculate_event_hash(fh_id,"2024-05-29","19:00:00-05:00")
+  event_hash: calculate_event_hash(fh_id, "2024-05-29", "19:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -508,7 +506,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-06-08"),
   performer: "Parker McCollum wsg Corey Kent",
   start_time: Time.from_iso8601!("19:30:00-05:00"),
-  event_hash: calculate_event_hash(fh_id,"2024-06-08","19:30:00-05:00")
+  event_hash: calculate_event_hash(fh_id, "2024-06-08", "19:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -517,7 +515,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-07-28"),
   performer: "Tate McRae wsg Presley Regier",
   start_time: Time.from_iso8601!("20:00:00-05:00"),
-  event_hash: calculate_event_hash(fh_id,"2024-07-28","20:00:00-05:00")
+  event_hash: calculate_event_hash(fh_id, "2024-07-28", "20:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -526,7 +524,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-08-24"),
   performer: "O.A.R. wsg Fitz and The Tantrums",
   start_time: Time.from_iso8601!("18:55:00-05:00"),
-  event_hash: calculate_event_hash(fh_id,"2024-08-24","18:55:00-05:00")
+  event_hash: calculate_event_hash(fh_id, "2024-08-24", "18:55:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -535,7 +533,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-06-13"),
   performer: "Sarah McLachlan wsg FEIST",
   start_time: Time.from_iso8601!("19:30:00-05:00"),
-  event_hash: calculate_event_hash(fh_id,"2024-06-13","19:30:00-05:00")
+  event_hash: calculate_event_hash(fh_id, "2024-06-13", "19:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -544,7 +542,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-06-14"),
   performer: "Billy Currington",
   start_time: Time.from_iso8601!("19:00:00-05:00"),
-  event_hash: calculate_event_hash(fh_id,"2024-06-14","19:00:00-05:00")
+  event_hash: calculate_event_hash(fh_id, "2024-06-14", "19:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -553,7 +551,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-06-18"),
   performer: "Pixies, Modest Mouse wsg Cat Power",
   start_time: Time.from_iso8601!("18:30:00-05:00"),
-  event_hash: calculate_event_hash(fh_id,"2024-06-18","18:30:00-05:00")
+  event_hash: calculate_event_hash(fh_id, "2024-06-18", "18:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -562,7 +560,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-07-12"),
   performer: "Mother Mother, Cavetown wsg Detroy Boys",
   start_time: Time.from_iso8601!("18:30:00-05:00"),
-  event_hash: calculate_event_hash(fh_id, "2024-07-12","18:30:00-05:00")
+  event_hash: calculate_event_hash(fh_id, "2024-07-12", "18:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -571,7 +569,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-07-06"),
   performer: "Kidz Bop",
   start_time: Time.from_iso8601!("18:00:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-07-06","18:00:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-07-06", "18:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -580,7 +578,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-08-15"),
   performer: "The Doobie Brothers wsg Steve Winwood",
   start_time: Time.from_iso8601!("19:00:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-08-15","19:00:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-08-15", "19:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -589,7 +587,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-09-07"),
   performer: "Avril Lavigne wsg Simple Plan and girlfriends",
   start_time: Time.from_iso8601!("19:00:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-09-07","19:00:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-09-07", "19:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -598,7 +596,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-10-14"),
   performer: "Pink wsg The Script and KidCutUp",
   start_time: Time.from_iso8601!("19:30:00-05:00"),
-  event_hash: calculate_event_hash(lca_id,"2024-10-14","19:30:00-05:00")
+  event_hash: calculate_event_hash(lca_id, "2024-10-14", "19:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -607,7 +605,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-03-26"),
   performer: "Ali Wong",
   start_time: Time.from_iso8601!("19:30:00-05:00"),
-  event_hash: calculate_event_hash(fox_id,"2024-03-26","19:30:00-05:00")
+  event_hash: calculate_event_hash(fox_id, "2024-03-26", "19:30:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -616,7 +614,7 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-07-02"),
   performer: "Janet Jackson wsg Nelly",
   start_time: Time.from_iso8601!("20:00:00-05:00"),
-  event_hash: calculate_event_hash(pk_id,"2024-07-02","20:00:00-05:00")
+  event_hash: calculate_event_hash(pk_id, "2024-07-02", "20:00:00-05:00")
 })
 
 Pta.Repo.insert!(%Pta.Event.Performance{
@@ -625,5 +623,5 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   date: Date.from_iso8601!("2024-07-16"),
   performer: "Bush wsg Jerry Cantrell and Candlebox",
   start_time: Time.from_iso8601!("18:00:00-05:00"),
-  event_hash: calculate_event_hash(fh_id,"2024-07-16","18:00:00-05:00")
+  event_hash: calculate_event_hash(fh_id, "2024-07-16", "18:00:00-05:00")
 })

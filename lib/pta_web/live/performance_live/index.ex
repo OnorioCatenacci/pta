@@ -17,9 +17,11 @@ defmodule PtaWeb.PerformanceLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    socket = assign(socket,
-    filter: %{venue: get_novenue(), date: get_nodate()},
-    performances: Event.list_performances())
+    socket =
+      assign(socket,
+        filter: %{venue: get_novenue(), date: get_nodate()},
+        performances: Event.list_performances()
+      )
 
     {:ok, socket}
   end
