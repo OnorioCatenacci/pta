@@ -36,9 +36,16 @@ defmodule PtaWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", PtaWeb do
-  #   pipe_through :api
-  # end
+  scope "/api" do
+     pipe_through :api
+
+     forward "/api", Absinthe.Plug,
+      schema: Pta.Web.Schema
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: Pta.Web.Schema,
+      interface: :simple
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:pta, :dev_routes) do
