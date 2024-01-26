@@ -37,10 +37,9 @@ defmodule PtaWeb.Router do
 
   # Other scopes may use custom stacks.
   scope "/api" do
-     pipe_through :api
+    pipe_through :api
 
-     forward "/api", Absinthe.Plug,
-      schema: Pta.Web.Schema
+    forward "/api", Absinthe.Plug, schema: Pta.Web.Schema
 
     forward "/graphiql", Absinthe.Plug.GraphiQL,
       schema: Pta.Web.Schema,
