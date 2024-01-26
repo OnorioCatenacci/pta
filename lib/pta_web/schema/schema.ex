@@ -1,44 +1,12 @@
 defmodule Pta.Web.Schema do
   use Absinthe.Schema
-  alias Pta.Event.Performance
-  import Ecto.Query
-  alias Pta.Repo
+  alias Pta.Web.Resolvers.Performance
   import_types(Absinthe.Type.Custom)
 
   query do
     field :performances, list_of(:performance) do
       arg(:performance_date, :string)
-
-      resolve(fn _, %{performance_date: performance_date}, _ ->
-        {:ok, date_for_query} = Date.from_iso8601(performance_date)
-
-        q =
-          from p in Performance,
-            where: p.date == ^date_for_query,
-            select: %Performance{
-              id: p.id,
-              name: p.name,
-              date: p.date,
-              performer: p.performer,
-              start_time: p.start_time
-            }
-
-        {:ok, Repo.all(q)}
-      end)
-
-      resolve(fn _, _, _ ->
-        q =
-          from p in Performance,
-            select: %Performance{
-              id: p.id,
-              name: p.name,
-              date: p.date,
-              performer: p.performer,
-              start_time: p.start_time
-            }
-
-        {:ok, Repo.all(q)}
-      end)
+      resolve(&Pta.Web.Resolvers.Performance.performances/3)
     end
   end
 
@@ -53,5 +21,22 @@ defmodule Pta.Web.Schema do
     field :performer, :string
     @desc "The time of the start of the performance (Eastern Standard Time)"
     field :start_time, :time
+    @desc "The name of the venue where the performance is to be held"
+    field :venue, :string
+  end
+
+  @desc "A concert or performance venue"
+  object :venue do
+    field :id, :id
+    @desc "The name of the venue"
+    field :name, :string
+    @desc "The state in which the venus is located"
+    field :state, :string
+    @desc "The zipcode in which the venue is located"
+    field :zip, :string
+    @desc "The street adddress of the venue"
+    field :address, :string
+    @desc "The city in which the venue is located"
+    field :city, :string
   end
 end

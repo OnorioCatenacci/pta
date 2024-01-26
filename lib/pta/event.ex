@@ -139,17 +139,8 @@ defmodule Pta.Event do
   @no_venue -1
   @no_date nil
 
-  @doc """
-  Returns the list of performances.
-
-  ## Examples
-
-      iex> list_performances()
-      [%Performance{}, ...]
-
-  """
-  def list_performances do
-    q =
+  defp base_performance_query do
+    base =
       from p in Performance,
         join: v in Venue,
         on: p.venue_id == v.id,
@@ -162,11 +153,27 @@ defmodule Pta.Event do
           start_time: p.start_time
         }
 
+    base
+  end
+
+  @doc """
+  Returns the list of performances.
+
+  ## Examples
+
+      iex> list_performances()
+      [%Performance{}, ...]
+
+  """
+  def list_performances do
+    q = base_performance_query()
     Repo.all(q)
   end
 
   def list_performances(filter) when is_map(filter) do
-    from(Performance)
+    q = base_performance_query()
+
+    from(q)
     |> filter_by_venue(filter)
     |> filter_by_date(filter)
     |> Repo.all()
@@ -181,7 +188,8 @@ defmodule Pta.Event do
   defp filter_by_date(query, %Performance{date: @no_date}), do: query
 
   defp filter_by_date(query, %Performance{date: date}) do
-    where(query, date: ^date)
+    {:ok, performance_date} = Date.from_iso8601(date)
+    where(query, date: ^performance_date)
   end
 
   @doc """
