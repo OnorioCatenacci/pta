@@ -617,3 +617,40 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   start_time: Time.from_iso8601!("18:00:00-05:00"),
   event_hash: calculate_event_hash(fh_id, "2024-07-16", "18:00:00-05:00")
 })
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: lca_id,
+  name: "Royal Flush Tour",
+  date: Date.from_iso8601!("2024-05-21"),
+  performer: "Heart wsg Cheap Trick",
+  start_time: Time.from_iso8601!("20:00:00-05:00"),
+  event_hash: calculate_event_hash(lca_id, "2024-05-21", "20:00:00-05:00")
+})
+
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: pk_id,
+  name: "Better Off Alone Tour",
+  date: Date.from_iso8601!("2024-06-14"),
+  performer: "A Boogie Wit Da Hoodie wsg NLE Choppa, Luh Tyler, Dess Dior and Byron Messia",
+  start_time: Time.from_iso8601!("20:00:00-05:00"),
+  event_hash: calculate_event_hash(pk_id, "2024-06-14", "20:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: pk_id,
+  name: "Summer Road Trip 2024",
+  date: Date.from_iso8601!("2024-07-21"),
+  performer: "Train and REO Speedwagon",
+  start_time: Time.from_iso8601!("18:25:00-05:00"),
+  event_hash: calculate_event_hash(pk_id, "2024-07-21", "18:25:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: pk_id,
+  name: "Freaks On Parade",
+  date: Date.from_iso8601!("2024-08-30"),
+  performer: "Rob Zombie and Alice Cooper wsg Ministry and Filter",
+  start_time: Time.from_iso8601!("18:00:00-05:00"),
+  event_hash: calculate_event_hash(pk_id, "2024-08-30", "18:00:00-05:00")
+})
