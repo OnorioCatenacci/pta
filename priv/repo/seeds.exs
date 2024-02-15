@@ -654,3 +654,66 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   start_time: Time.from_iso8601!("18:00:00-05:00"),
   event_hash: calculate_event_hash(pk_id, "2024-08-30", "18:00:00-05:00")
 })
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: pk_id,
+  name: "Love Earth Tour",
+  date: Date.from_iso8601!("2024-05-22"),
+  performer: "Neil Young and Crazy Horse",
+  start_time: Time.from_iso8601!("19:30:00-05:00"),
+  event_hash: calculate_event_hash(pk_id, "2024-05-22", "19:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "West Coast Takeover",
+  date: Date.from_iso8601!("2024-05-25"),
+  performer: "E-40 & B-Legit, Too Short, DJ Quik, Tha Dogg Pound, Mack 10 & Above the Law",
+  start_time: Time.from_iso8601!("20:00:00-05:00"),
+  event_hash: calculate_event_hash(fox_id, "2024-05-25", "20:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: fox_id,
+  name: "Daniel Tosh Live",
+  date: Date.from_iso8601!("2024-06-15"),
+  performer: "Daniel Tosh",
+  start_time: Time.from_iso8601!("19:30:00-05:00"),
+  event_hash: calculate_event_hash(fox_id, "2024-06-15", "19:30:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: pk_id,
+  name: "Oneness Tour",
+  date: Date.from_iso8601!("2024-06-25"),
+  performer: "Santana and Counting Crows",
+  start_time: Time.from_iso8601!("19:00:00-05:00"),
+  event_hash: calculate_event_hash(pk_id, "2024-06-25", "19:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: pk_id,
+  name: "99.5 WYCD Hoedown",
+  date: Date.from_iso8601!("2024-06-28"),
+  performer: "Luke Bryan, Alana Springsteen, Chase Matthew and HunterGirl",
+  start_time: Time.from_iso8601!("15:00:00-05:00"),
+  event_hash: calculate_event_hash(pk_id, "2024-06-28", "15:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: pk_id,
+  name: "Parti-Gras 2.0",
+  date: Date.from_iso8601!("2024-08-23"),
+  performer: "Bret Michaels",
+  start_time: Time.from_iso8601!("19:00:00-05:00"),
+  event_hash: calculate_event_hash(pk_id, "2024-08-23", "19:00:00-05:00")
+})
+
+Pta.Repo.insert!(%Pta.Event.Performance{
+  venue_id: lca_id,
+  name: "The Forget Tomorrow World Tour",
+  date: Date.from_iso8601!("2024-10-25"),
+  performer: "Justin Timberlake",
+  start_time: Time.from_iso8601!("19:30:00-05:00"),
+  event_hash: calculate_event_hash(pk_id, "2024-10-25", "19:30:00-05:00")
+})
