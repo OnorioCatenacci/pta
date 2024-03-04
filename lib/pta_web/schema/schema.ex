@@ -6,7 +6,7 @@ defmodule Pta.Web.Schema do
   query do
     field :performances, list_of(:performance) do
       arg(:performance_date, :string)
-      resolve(&Pta.Web.Resolvers.Performance.performances/3)
+      resolve(&Performance.performances/3)
     end
   end
 

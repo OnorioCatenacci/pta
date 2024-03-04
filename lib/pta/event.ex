@@ -32,6 +32,7 @@ defmodule Pta.Event do
       Venue
       |> filter_by_city(filter)
       |> filter_by_zip(filter)
+      |> filter_by_name(filter)
     )
     |> Repo.all()
   end
@@ -46,6 +47,11 @@ defmodule Pta.Event do
 
   defp filter_by_zip(query, %{zip: zip}) do
     where(query, zip: ^zip)
+  end
+
+  defp filter_by_name(query, %{name: ""}), do: query
+  defp filter_by_name(query, %{name: name}) do
+    where(query, name: ^name)
   end
 
   @doc """
@@ -152,7 +158,6 @@ defmodule Pta.Event do
           performer: p.performer,
           start_time: p.start_time
         }
-
     base
   end
 
