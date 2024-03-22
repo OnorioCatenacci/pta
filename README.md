@@ -45,13 +45,3 @@ but when I inspect source in the web browser I see something more like this:
 ```
 
 So, I can't just do a normal parse on the value returned by HTTPoison. I use [Rosie Pattern Language](https://rosie-lang.org) to do my parsing because it supports Parsing Expression Grammars which can support recursive constructs.  RegEx's do not correctly support recursive constructs.  Besides that Rosie has some other nice features (built in unit test facility is great).
-
-
-# Starting the app
-I've moved the PSQL db to a docker container.  If you're starting from scratch then do the following:
-
-1.) docker compose up -d
-2.) mix ecto.reset 
-3.) mix phx.server
-
-You can skip step 2 if you've already populated the db although I don't think it will hurt anything if you do run it against an already populated db. 
