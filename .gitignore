@@ -7,5 +7,6 @@ erl_crash.dump
 *.ez
 *.beam
 /config/*.secret.exs
+/postgres-data
 .elixir_ls/
 .vscode/settings.json
