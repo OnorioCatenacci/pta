@@ -8,6 +8,10 @@ defmodule Pta.Web.Schema do
       arg(:performance_date, :string)
       resolve(&Performance.performances/3)
     end
+
+    field :venues, list_of(:venue) do
+      resolve(&Performance.venues/3)
+    end
   end
 
   @desc "A performance at a specific venue"
