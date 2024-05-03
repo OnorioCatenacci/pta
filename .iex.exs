@@ -29,8 +29,7 @@ defmodule EctoHelpers.Pta do
         database: "pta_dev",
         pool_size: 20,
         queue_target: 5000,
-        ssl: false,
-        read_only: true
+        ssl: false
       )
 
       Pta.Repo.put_dynamic_repo(:pta)

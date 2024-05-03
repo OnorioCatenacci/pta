@@ -10,7 +10,11 @@ CREATE USER pta_insert WITH NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT LOGIN;
 GRANT pg_read_all_data TO pta_query;
 GRANT SELECT ON TABLE venues TO pta_query;
 GRANT SELECT ON TABLE performances TO pta_query;
+GRANT ALL PRIVILEGES ON TABLE schema_migrations TO pta_query;
+GRANT CREATE ON SCHEMA public TO pta_query;
 
 GRANT pg_write_all_data TO pta_insert;
 GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE venues TO pta_insert;
 GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE performances TO pta_insert;
+GRANT ALL PRIVILEGES ON TABLE schema_migrations TO pta_insert;
+GRANT CREATE ON SCHEMA public TO pta_insert;

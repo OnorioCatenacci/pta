@@ -2,8 +2,8 @@ import Config
 
 # Configure your database
 config :pta, Pta.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "pta_query",
+  password: "pta_query",
   hostname: "localhost",
   database: "pta_dev",
   stacktrace: true,
