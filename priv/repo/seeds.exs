@@ -10,6 +10,52 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
+# Create custom users for reading data and writing data
+defmodule LeastPrivilege do
+  defp create_nonadmin_user(user_name, password) do
+    Ecto.Adapters.SQL.query!(
+      Pta.Repo,
+      "CREATE USER #{user_name} WITH NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT LOGIN PASSWORD #{password};"
+    )
+  end
+
+  defp grant_table_privileges(user_name, privileges, tables) do
+    for table <- tables do
+      for privilege <- privileges do
+        Ecto.Adapters.SQL.query!(
+          Pta.Repo,
+          "GRANT #{privilege} ON TABLE #{table} TO #{user_name};"
+        )
+      end
+    end
+ end
+
+  def create_query_only_user do
+    pta_query_password = "'" <> System.fetch_env!("PTA_QUERY_PASSWORD") <> "'"
+    user_name = "pta_query"
+
+    create_nonadmin_user(user_name, pta_query_password)
+    grant_table_privileges(user_name, ["SELECT"], ["venues", "performances"])
+    grant_table_privileges(user_name, ["ALL PRIVILEGES"], ["schema_migrations"])
+    Ecto.Adapters.SQL.query!(Pta.Repo, "GRANT pg_read_all_data TO #{user_name};")
+    Ecto.Adapters.SQL.query!(Pta.Repo, "GRANT CREATE ON SCHEMA public TO #{user_name};")
+  end
+
+  def create_readwrite_user do
+    pta_update_password = "'" <> System.fetch_env!("PTA_UPDATE_PASSWORD") <> "'"
+    user_name = "pta_update"
+
+    create_nonadmin_user(user_name, pta_update_password)
+    grant_table_privileges(user_name, ["SELECT", "INSERT", "UPDATE", "DELETE"], ["venues", "performances"])
+    grant_table_privileges(user_name, ["ALL PRIVILEGES"], ["schema_migrations"])
+    Ecto.Adapters.SQL.query!(Pta.Repo, "GRANT pg_write_all_data TO #{user_name};")
+    Ecto.Adapters.SQL.query!(Pta.Repo, "GRANT CREATE ON SCHEMA public TO #{user_name};")
+  end
+end
+
+LeastPrivilege.create_query_only_user()
+LeastPrivilege.create_readwrite_user()
+
 Pta.Repo.insert!(%Pta.Event.Venue{
   name: "Pine Knob Music Theater",
   address: "7774 Sashabaw Rd.",
@@ -626,7 +672,6 @@ Pta.Repo.insert!(%Pta.Event.Performance{
   start_time: Time.from_iso8601!("20:00:00-05:00"),
   event_hash: calculate_event_hash(lca_id, "2024-05-21", "20:00:00-05:00")
 })
-
 
 Pta.Repo.insert!(%Pta.Event.Performance{
   venue_id: pk_id,
