@@ -12,6 +12,11 @@
 
 # Create custom users for reading data and writing data
 defmodule LeastPrivilege do
+  @moduledoc """
+  Create database users with the least privileges necessary to perform their tasks.
+  """
+
+  @spec create_nonadmin_user(String.t(), String.t()) :: query_result.t()
   defp create_nonadmin_user(user_name, password) do
     Ecto.Adapters.SQL.query!(
       Pta.Repo,
@@ -19,6 +24,7 @@ defmodule LeastPrivilege do
     )
   end
 
+  @spec grant_table_privileges(String.t(), [String.t()], [String.t()]) :: query_result.t()
   defp grant_table_privileges(user_name, privileges, tables) do
     for table <- tables do
       for privilege <- privileges do
@@ -28,8 +34,9 @@ defmodule LeastPrivilege do
         )
       end
     end
- end
+  end
 
+  @spec create_query_only_user() :: query_result.t()
   def create_query_only_user do
     pta_query_password = "'" <> System.fetch_env!("PTA_QUERY_PASSWORD") <> "'"
     user_name = "pta_query"
@@ -41,12 +48,18 @@ defmodule LeastPrivilege do
     Ecto.Adapters.SQL.query!(Pta.Repo, "GRANT CREATE ON SCHEMA public TO #{user_name};")
   end
 
+  @spec create_readwrite_user() :: query_result.t()
   def create_readwrite_user do
     pta_update_password = "'" <> System.fetch_env!("PTA_UPDATE_PASSWORD") <> "'"
     user_name = "pta_update"
 
     create_nonadmin_user(user_name, pta_update_password)
-    grant_table_privileges(user_name, ["SELECT", "INSERT", "UPDATE", "DELETE"], ["venues", "performances"])
+
+    grant_table_privileges(user_name, ["SELECT", "INSERT", "UPDATE", "DELETE"], [
+      "venues",
+      "performances"
+    ])
+
     grant_table_privileges(user_name, ["ALL PRIVILEGES"], ["schema_migrations"])
     Ecto.Adapters.SQL.query!(Pta.Repo, "GRANT pg_write_all_data TO #{user_name};")
     Ecto.Adapters.SQL.query!(Pta.Repo, "GRANT CREATE ON SCHEMA public TO #{user_name};")
